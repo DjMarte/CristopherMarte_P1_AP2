@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
             CristopherMarte_P1_AP2Theme {
                 val navHost = rememberNavController()
                 ParcialNavHost(navHost)
+
             }
         }
     }
