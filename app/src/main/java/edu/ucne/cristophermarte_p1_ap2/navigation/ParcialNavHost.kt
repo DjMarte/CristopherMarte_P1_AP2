@@ -1,4 +1,4 @@
-package edu.ucne.cristophermarte_p1_ap2.presentation.navigation
+package edu.ucne.cristophermarte_p1_ap2.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -14,7 +14,6 @@ fun ParcialNavHost(
         startDestination = Screen.Home
     ) {
         composable<Screen.Home>{
-
         }
     }
 }

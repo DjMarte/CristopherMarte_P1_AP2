@@ -1,4 +1,4 @@
-package edu.ucne.cristophermarte_p1_ap2.presentation.navigation
+package edu.ucne.cristophermarte_p1_ap2.navigation
 
 import kotlinx.serialization.Serializable
 
