@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Sistemas")
-data class Sistema(
+data class SistemaEntity(
     @PrimaryKey
     val sistemaId: Int? = null,
     val nombre: String

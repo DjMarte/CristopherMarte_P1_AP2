@@ -4,13 +4,13 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import edu.ucne.cristophermarte_p1_ap2.data.local.entity.Sistema
+import edu.ucne.cristophermarte_p1_ap2.data.local.entity.SistemaEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SistemaDao {
     @Upsert()
-    suspend fun save(sistema: Sistema)
+    suspend fun save(sistemaEntity: SistemaEntity)
 
     @Query(
         """
@@ -19,11 +19,11 @@ interface SistemaDao {
             LIMIT 1
         """
     )
-    suspend fun find(id: Int): Sistema?
+    suspend fun find(id: Int): SistemaEntity?
 
     @Delete
-    suspend fun delete(sistema: Sistema)
+    suspend fun delete(sistemaEntity: SistemaEntity)
 
     @Query("SELECT * FROM Sistemas")
-    fun getAll(): Flow<List<Sistema>>
+    fun getAll(): Flow<List<SistemaEntity>>
 }
