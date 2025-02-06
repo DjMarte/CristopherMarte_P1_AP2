@@ -20,4 +20,6 @@ object AppModule {
             appContext, CristopherMarteP1Db::class.java, "CristopherMarteP1Db"
         ).fallbackToDestructiveMigration().build()
     }
+    @Provides
+    fun provideSistemaDao(sistemadDb: CristopherMarteP1Db) = sistemadDb.sistemaDao()
 }
