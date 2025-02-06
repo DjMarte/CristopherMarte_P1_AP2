@@ -104,6 +104,12 @@ private fun TableHeader() {
             style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onPrimaryContainer
         )
+        Text(
+            modifier = Modifier.weight(2f),
+            text = "Precio",
+            style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
     }
     HorizontalDivider(modifier = Modifier.padding(vertical = 5.dp))
 }
@@ -123,6 +129,11 @@ private fun SistemaRow(
         Text(
             modifier = Modifier.weight(2f),
             text = it.nombre,
+            style = MaterialTheme.typography.bodyMedium
+        )
+        Text(
+            modifier = Modifier.weight(2f),
+            text = it.precio.toString(),
             style = MaterialTheme.typography.bodyMedium
         )
     }

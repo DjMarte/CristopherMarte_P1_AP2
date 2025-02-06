@@ -9,7 +9,7 @@ import edu.ucne.cristophermarte_p1_ap2.data.local.entity.SistemaEntity
     entities = [
         SistemaEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class CristopherMarteP1Db : RoomDatabase() {

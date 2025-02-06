@@ -90,6 +90,13 @@ fun SistemaListBodyScreen(
                         onValueChange = viewModel::onNombreChange,
                         modifier = Modifier.fillMaxWidth()
                     )
+                    // Campo Precio
+                    OutlinedTextField(
+                        label = { Text(text = "Precio") },
+                        value = uiState.precio,
+                        onValueChange = viewModel::onPrecioChange,
+                        modifier = Modifier.fillMaxWidth()
+                    )
                     // Espacio para el mensaje de error
                     Spacer(modifier = Modifier.padding(2.dp))
                     uiState.errorMessage?.let {

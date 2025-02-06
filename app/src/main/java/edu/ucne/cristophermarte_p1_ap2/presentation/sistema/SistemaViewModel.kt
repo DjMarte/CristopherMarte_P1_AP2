@@ -25,22 +25,37 @@ class SistemaViewModel @Inject constructor(
     fun save() {
         viewModelScope.launch {
             val nombre = _uiState.value.nombre
+            val precio = _uiState.value.precio
 
-            val nombre_Expresion_Regular = "^[A-Za-z\\s']+\$".toRegex()
+            val nombreExpresionRegular = "^[A-Za-z\\s']+\$".toRegex()
+            val precioExpresionRegular = "^[0-9]+$".toRegex()
 
-            if (nombre.isBlank()) {
+            if (nombre.isBlank() || precio.isBlank()) {
                 _uiState.update {
-                    it.copy(errorMessage = "Campo nombre requerido")
+                    it.copy(errorMessage = "Campo nombre o precio requerido")
                 }
                 return@launch
-            } else if (!nombre.matches(nombre_Expresion_Regular)) {
+            } else if (!nombre.matches(nombreExpresionRegular)) {
                 _uiState.update {
                     it.copy(errorMessage = "El nombre no debe contener números o caracteres especiales")
                 }
                 return@launch
-            } else {
-                sistemaRepository.saveSistema(_uiState.value.toEntity())
-                new()
+            } else if (!precio.matches(precioExpresionRegular)) {
+                _uiState.update {
+                    it.copy(errorMessage = "El precio debe ser un número válido")
+                }
+                return@launch
+            }else {
+                val precioDouble = precio.toDouble()
+                if (precioDouble <= 0) {
+                    _uiState.update {
+                        it.copy(errorMessage = "El precio debe ser mayor a 0")
+                    }
+                    return@launch
+                } else {
+                    sistemaRepository.saveSistema(_uiState.value.toEntity())
+                    new()
+                }
             }
         }
     }
@@ -53,7 +68,8 @@ class SistemaViewModel @Inject constructor(
                     _uiState.update {
                         it.copy(
                             sistemaId = sistema.sistemaId,
-                            nombre = sistema.nombre
+                            nombre = sistema.nombre,
+                            precio = sistema.precio.toString()
                         )
                     }
                 }
@@ -78,6 +94,13 @@ class SistemaViewModel @Inject constructor(
             )
         }
     }
+    fun onPrecioChange(precio: String) {
+        _uiState.update {
+            it.copy(
+                precio = precio
+            )
+        }
+    }
 
 
     private fun getSistemas() {
@@ -92,5 +115,6 @@ class SistemaViewModel @Inject constructor(
 }
 fun SistemaUiState.toEntity() = SistemaEntity(
     sistemaId = this.sistemaId,
-    nombre = this.nombre
+    nombre = this.nombre,
+    precio = this.precio.toDouble()
 )
