@@ -5,10 +5,10 @@ import edu.ucne.cristophermarte_p1_ap2.data.local.entity.SistemaEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class EntityRepository @Inject constructor(
+class SistemaRepository @Inject constructor(
     private val sistemaDao: SistemaDao
 ) {
-    suspend fun saveEntity(sistemaEntity: SistemaEntity) = sistemaDao.save(sistemaEntity)
+    suspend fun saveSistema(sistemaEntity: SistemaEntity) = sistemaDao.save(sistemaEntity)
 
     suspend fun find(id: Int): SistemaEntity? =  sistemaDao.find(id)
 
