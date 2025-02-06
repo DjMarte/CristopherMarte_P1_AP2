@@ -2,16 +2,16 @@ package edu.ucne.cristophermarte_p1_ap2.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import edu.ucne.cristophermarte_p1_ap2.data.local.dao.EntityDao
-import edu.ucne.cristophermarte_p1_ap2.data.local.entity.Entity
+import edu.ucne.cristophermarte_p1_ap2.data.local.dao.SistemaDao
+import edu.ucne.cristophermarte_p1_ap2.data.local.entity.SistemaEntity
 
 @Database(
     entities = [
-        Entity::class,
+        SistemaEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class CristopherMarteP1Db : RoomDatabase() {
-    abstract fun entityDao(): EntityDao
+    abstract fun sistemaDao(): SistemaDao
 }
