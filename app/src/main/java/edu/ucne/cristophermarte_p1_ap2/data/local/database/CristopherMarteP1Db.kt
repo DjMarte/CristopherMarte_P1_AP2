@@ -13,5 +13,5 @@ import edu.ucne.cristophermarte_p1_ap2.data.local.entity.SistemaEntity
     exportSchema = false
 )
 abstract class CristopherMarteP1Db : RoomDatabase() {
-    abstract fun entityDao(): SistemaDao
+    abstract fun sistemaDao(): SistemaDao
 }
